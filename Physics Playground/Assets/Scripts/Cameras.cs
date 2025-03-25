@@ -26,7 +26,7 @@ public class Cameras : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Camera1.SetActive(true);
             GeneralCamera.SetActive(false);
@@ -37,7 +37,7 @@ public class Cameras : MonoBehaviour
             Camera6.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Camera2.SetActive(true);
             GeneralCamera.SetActive(false);
@@ -48,7 +48,7 @@ public class Cameras : MonoBehaviour
             Camera6.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Camera3.SetActive(true);
             GeneralCamera.SetActive(false);
@@ -59,7 +59,7 @@ public class Cameras : MonoBehaviour
             Camera6.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Camera4.SetActive(true);
             GeneralCamera.SetActive(false);
@@ -70,7 +70,7 @@ public class Cameras : MonoBehaviour
             Camera6.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad5))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             Camera5.SetActive(true);
             GeneralCamera.SetActive(false);
@@ -81,7 +81,7 @@ public class Cameras : MonoBehaviour
             Camera6.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad6))
+        if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Camera6.SetActive(true);
             GeneralCamera.SetActive(false);
@@ -90,6 +90,15 @@ public class Cameras : MonoBehaviour
             Camera3.SetActive(false);
             Camera4.SetActive(false);
             Camera5.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Time.timeScale = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Time.timeScale = 1;
         }
     }
 }
