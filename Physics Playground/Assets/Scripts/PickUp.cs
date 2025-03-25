@@ -6,28 +6,23 @@ public class PickUpScript : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
-    //if you copy from below this point, you are legally required to like the video
-    public float throwForce = 500f; //force at which the object is thrown at
-    public float pickUpRange = 5f; //how far the player can pickup the object from
-    private float rotationSensitivity = 1f; //how fast/slow the object is rotated in relation to mouse movement
-    private GameObject heldObj; //object which we pick up
-    private Rigidbody heldObjRb; //rigidbody of object we pick up
-    private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
-    private int LayerNumber; //layer index
+    public float throwForce = 500f; 
+    public float pickUpRange = 5f; 
+    private float rotationSensitivity = 1f; 
+    private GameObject heldObj; 
+    private Rigidbody heldObjRb; 
+    private bool canDrop = true; 
+    private int LayerNumber; 
 
     //Reference to script which includes mouse movement of player (looking around)
-    //we want to disable the player looking around when rotating the object
-    //example below 
-    //MouseLookScript mouseLookScript;
     void Start()
     {
-        LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
+        LayerNumber = LayerMask.NameToLayer("holdLayer"); 
 
-        //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
+        if (Input.GetKeyDown(KeyCode.E)) 
         {
             if (heldObj == null) //if currently not holding anything
             {
@@ -56,7 +51,7 @@ public class PickUpScript : MonoBehaviour
         {
             MoveObject(); //keep object position at holdPos
             RotateObject();
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) //Mous0 (leftclick) is used to throw, change this if you want another button to be used)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) 
             {
                 StopClipping();
                 ThrowObject();
@@ -69,11 +64,11 @@ public class PickUpScript : MonoBehaviour
         if (pickUpObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
         {
             heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
-            heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
+            heldObjRb = pickUpObj.GetComponent<Rigidbody>(); 
             heldObjRb.isKinematic = true;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
-            //make sure object doesnt collide with player, it can cause weird bugs
+           
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
     }
@@ -93,13 +88,11 @@ public class PickUpScript : MonoBehaviour
     }
     void RotateObject()
     {
-        if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
+        if (Input.GetKey(KeyCode.R))//hold R key to rotate
         {
             canDrop = false; //make sure throwing can't occur during rotating
 
-            //disable player being able to look around
-            //mouseLookScript.verticalSensitivity = 0f;
-            //mouseLookScript.lateralSensitivity = 0f;
+            
 
             float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
             float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
@@ -109,9 +102,7 @@ public class PickUpScript : MonoBehaviour
         }
         else
         {
-            //re-enable player being able to look around
-            //mouseLookScript.verticalSensitivity = originalvalue;
-            //mouseLookScript.lateralSensitivity = originalvalue;
+            
             canDrop = true;
         }
     }
@@ -136,8 +127,7 @@ public class PickUpScript : MonoBehaviour
         if (hits.Length > 1)
         {
             //change object position to camera position 
-            heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
-            //if your player is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
+            heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); 
         }
     }
 }
