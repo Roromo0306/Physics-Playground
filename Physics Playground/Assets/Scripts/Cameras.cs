@@ -10,6 +10,7 @@ public class Cameras : MonoBehaviour
     public GameObject Camera3;
     public GameObject Camera4;
     public GameObject Camera5;
+    public GameObject Camera6;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class Cameras : MonoBehaviour
         Camera3.SetActive(false);
         Camera4.SetActive(false);
         Camera5.SetActive(false);
+        Camera6.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class Cameras : MonoBehaviour
             Camera3.SetActive(false);
             Camera4.SetActive(false);
             Camera5.SetActive(false);
+            Camera6.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad2))
@@ -42,6 +45,7 @@ public class Cameras : MonoBehaviour
             Camera3.SetActive(false);
             Camera4.SetActive(false);
             Camera5.SetActive(false);
+            Camera6.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad3))
@@ -52,6 +56,7 @@ public class Cameras : MonoBehaviour
             Camera2.SetActive(false);
             Camera4.SetActive(false);
             Camera5.SetActive(false);
+            Camera6.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad4))
@@ -62,6 +67,7 @@ public class Cameras : MonoBehaviour
             Camera2.SetActive(false);
             Camera3.SetActive(false);
             Camera5.SetActive(false);
+            Camera6.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad5))
@@ -72,6 +78,18 @@ public class Cameras : MonoBehaviour
             Camera2.SetActive(false);
             Camera3.SetActive(false);
             Camera4.SetActive(false);
+            Camera6.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            Camera6.SetActive(true);
+            GeneralCamera.SetActive(false);
+            Camera1.SetActive(false);
+            Camera2.SetActive(false);
+            Camera3.SetActive(false);
+            Camera4.SetActive(false);
+            Camera5.SetActive(false);
         }
     }
 }
